@@ -71,10 +71,7 @@ export class MyElement extends LitElement {
     return html`
       <div class="container">
         <div class="left">
-          <span>
-            Name:
-            <input @input="${this.nameInput}" />
-          </span>
+          <span> Name: <input @input="${this.nameInput}" /> </span>
           <span>
             Post:
             <textarea @input="${this.postInput}"></textarea>
@@ -140,7 +137,7 @@ export class MyElement extends LitElement {
     };
     this.tweets = [...this.tweets, {...this.tweet}];
     this.postCount = this.tweets.length;
-    saveToStorage(this.tweets);
+    saveToStorage(this.tweet);
   }
 
   DeleteTweet(index) {
