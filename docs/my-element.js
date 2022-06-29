@@ -71,10 +71,16 @@ export class MyElement extends LitElement {
     return html`
       <div class="container">
         <div class="left">
-          <span> Name: <input @input="${this.nameInput}" /> </span>
+          <span>
+            Name:
+            <input @input="${this.nameInput}" .value="${this.name || ''}" />
+          </span>
           <span>
             Post:
-            <textarea @input="${this.postInput}"></textarea>
+            <textarea
+              @input="${this.postInput}"
+              .value="${this.post || ''}"
+            ></textarea>
           </span>
           <span>
             <button @click="${this.postTweet}">Tweet</button>
@@ -105,6 +111,12 @@ export class MyElement extends LitElement {
 
   static get properties() {
     return {
+      name: {
+        type: String,
+      },
+      post: {
+        type: String,
+      },
       tweets: {
         type: Array,
       },
@@ -137,7 +149,12 @@ export class MyElement extends LitElement {
     };
     this.tweets = [...this.tweets, {...this.tweet}];
     this.postCount = this.tweets.length;
+    this.name = '';
+    this.post = '';
     saveToStorage(this.tweet);
+    // .then((r) => console.log(r))
+    // .catch((error) => console.log(error));
+    // აქ წესით მჭირდებოდა,მაგრამ ვერ მივხვდი როგორ გამომეყენებინა :დდ
   }
 
   DeleteTweet(index) {
