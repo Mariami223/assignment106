@@ -119,7 +119,7 @@ export class MyElement extends LitElement {
 
   constructor() {
     super();
-    this.tweets = [];
+    this.tweets = loadFromStorage();
   }
 
   nameInput(event) {
@@ -140,13 +140,14 @@ export class MyElement extends LitElement {
     };
     this.tweets = [...this.tweets, {...this.tweet}];
     this.postCount = this.tweets.length;
-    console.log(this.name);
+    saveToStorage(this.tweets);
   }
 
   DeleteTweet(index) {
     this.tweets.splice(index, 1);
     this.tweets = [...this.tweets];
     this.postCount = this.tweets.length;
+    deleteFromStorage(index);
   }
 }
 
