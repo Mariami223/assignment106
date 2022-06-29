@@ -151,10 +151,14 @@ export class MyElement extends LitElement {
     this.postCount = this.tweets.length;
     this.name = '';
     this.post = '';
-    saveToStorage(this.tweet);
-    // .then((r) => console.log(r))
-    // .catch((error) => console.log(error));
-    // აქ წესით მჭირდებოდა,მაგრამ ვერ მივხვდი როგორ გამომეყენებინა :დდ
+    saveToStorage(this.tweet)
+      .then((r) => {
+        console.log(r);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    // აქ წესით მჭირდებოდა,მაგრამ რამდენად სწორად გავაკეთე არ ვიციი :დდ
   }
 
   DeleteTweet(index) {
